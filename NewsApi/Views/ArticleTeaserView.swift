@@ -8,24 +8,36 @@
 import SwiftUI
 
 struct ArticleTeaserView: View {
-    let article: Article
+    @State var article: Article
+
     var body: some View {
-        HStack {
-            AsyncImage(url: article.urlToImage){ result in
+        VStack {
+            AsyncImage(url: article.urlToImage) { result in
                 if let image = result.image {
                     image
                         .resizable()
-                        .aspectRatio(contentMode: .fill)
                 } else {
-                    Image("camera")
+                    ProgressView()
                 }
-            }
-                .frame(width: 200, height: 200).clipped()
-            Text(article.title).font(.system(size: 16, weight: .bold))
-        }
+            }.frame(height: 200)
+
+            VStack(alignment: .leading) {
+                Text(article.title).modifier(Headline())
+                if let description = article.description {
+                    Text(description).modifier(Abstract())
+                }
+                HStack {
+                    Text(article.source?.name  ?? "").modifier(Footnote())
+                    Spacer()
+                    Text(article.publishedAt.formatted()).modifier(Footnote())
+                }
+
+            }.padding(.horizontal, 5)
+                .padding(.bottom, 10)
+        }.background(Color("GroupBackground"))
     }
 }
 
 #Preview {
-    ArticleTeaserView(article: Article.sampleSelf())
+    ArticleTeaserView(article: Article.sampleSelf()).frame(width: 350, height: 500)
 }

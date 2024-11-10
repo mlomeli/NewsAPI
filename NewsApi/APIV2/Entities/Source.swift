@@ -6,5 +6,6 @@
 //
 
 struct Source {
-  let id: String?
+    let id: String?
+    let name: String
 }

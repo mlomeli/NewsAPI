@@ -6,12 +6,15 @@
 //
 import Foundation
 
-struct Article {
+struct Article: Identifiable {
     let source: Source?
     let author: String?
     let title: String
     let description: String?
-    let url: URL?
+    let url: URL
     let urlToImage: URL?
     let publishedAt: Date
+    var id: String {
+        url.absoluteString
+    }
 }
