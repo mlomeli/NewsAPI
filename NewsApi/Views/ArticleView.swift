@@ -1,13 +1,13 @@
 //
-//  ArticleTeaserView.swift
+//  ArticleView.swift
 //  NewsApi
 //
-//  Created by Miguel A Lomeli Cantu on 09/11/24.
+//  Created by Miguel A Lomeli Cantu on 11/11/24.
 //
 
 import SwiftUI
 
-struct ArticleTeaserView: View {
+struct ArticleView: View {
     @State var article: Article
 
     var body: some View {
@@ -26,11 +26,14 @@ struct ArticleTeaserView: View {
                     Text(article.title).modifier(Headline())
                     HStack {
                         Text(article.source?.name  ?? "").modifier(Footnote())
-                        Spacer()
                         Text(article.publishedAt.formatted()).modifier(Footnote())
                     }
+                    if let description = article.description {
+                        Text(description).modifier(Abstract())
+                    }
 
-                }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+
+                }.frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 5)
                     .padding(.bottom, 10)
             }.background(Color("Background"))
@@ -39,5 +42,5 @@ struct ArticleTeaserView: View {
 }
 
 #Preview {
-    ArticleTeaserView(article: Article.sampleSelf()).background(Color.purple).frame(width: 350, height: 350).clipped()
+    ArticleView(article: Article.sampleSelf())
 }

@@ -10,21 +10,19 @@ import SwiftUI
 struct ArticleCollectionView: View {
     let articles = Article.sampleSet()
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: gridItems) {
-                ForEach(articles) { article in
-                    ArticleTeaserView(article: article)
+        GeometryReader { reader in
+            ScrollView {
+                LazyVStack {
+                    ForEach(Array(articles.enumerated()), id: \.offset) { _, article in
+                        NavigationLink(destination: ArticleView(article: article)) {
+                            ArticleTeaserView(article: article).frame(height: reader.size.width*3/4 + 75).clipped()
+                        }
+
+                    }
                 }
             }
         }
-
     }
-
-    //viewmodel
-
-    let gridItems = [
-        GridItem(.flexible(), spacing: 10)
-      ]
 }
 
 #Preview {

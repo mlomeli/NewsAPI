@@ -26,6 +26,7 @@ struct Headline: ViewModifier {
   func body(content: Content) -> some View {
       return content
           .font(.headline)
+          .foregroundColor(Color("Text"))
           .padding(.vertical, 5)
   }
 }
