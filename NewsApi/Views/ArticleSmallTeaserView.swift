@@ -5,7 +5,6 @@
 //  Created by Miguel A Lomeli Cantu on 10/11/24.
 //
 
-
 import SwiftUI
 
 struct ArticleSmallTeaserView: View {

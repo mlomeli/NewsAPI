@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct Article: Identifiable {
+struct Article: Identifiable, Decodable {
     let source: Source?
     let author: String?
     let title: String
