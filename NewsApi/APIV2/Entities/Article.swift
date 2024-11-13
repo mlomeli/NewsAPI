@@ -13,7 +13,7 @@ struct Article: Identifiable, Decodable {
     let description: String?
     let url: URL
     let urlToImage: URL?
-    let publishedAt: Date
+    let publishedAt: String
     var id: String {
         url.absoluteString
     }

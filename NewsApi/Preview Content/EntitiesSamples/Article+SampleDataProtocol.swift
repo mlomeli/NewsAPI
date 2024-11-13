@@ -14,7 +14,7 @@ extension Article: SampleDataProtocol {
                         """,
                        url: URL(string: "https://google.com")!,
                        urlToImage: URL.localURLForXCAssetJPG(name: "Pexels1"),
-                       publishedAt: Date())
+                       publishedAt: "date")
     }
 
     static func sampleSet() ->[Article] {
@@ -27,7 +27,7 @@ extension Article: SampleDataProtocol {
                             """,
                            url: URL(string: "https://google.com?\(idx)")!,
                            urlToImage: URL(string: "https://picsum.photos/200/300")!,
-                           publishedAt: Date())
+                           publishedAt: "date")
             articles.append(article)
         }
         return articles

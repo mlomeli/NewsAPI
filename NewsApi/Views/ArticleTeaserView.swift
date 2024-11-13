@@ -27,7 +27,7 @@ struct ArticleTeaserView: View {
                     HStack {
                         Text(article.source?.name  ?? "").modifier(Footnote())
                         Spacer()
-                        Text(article.publishedAt.formatted()).modifier(Footnote())
+                        Text(article.publishedAt).modifier(Footnote())
                     }
 
                 }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)

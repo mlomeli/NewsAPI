@@ -8,19 +8,21 @@
 import SwiftUI
 
 struct ArticleCollectionView: View {
-    let articles = Article.sampleSet()
+    @StateObject var viewModel = ArticlesViewModel()
     var body: some View {
         GeometryReader { reader in
             ScrollView {
                 LazyVStack {
-                    ForEach(Array(articles.enumerated()), id: \.offset) { _, article in
+                    ForEach(Array(viewModel.articlesData.enumerated()), id: \.offset) { _, article in
                         NavigationLink(destination: ArticleView(article: article)) {
                             ArticleTeaserView(article: article).frame(height: reader.size.width*3/4 + 75).clipped()
                         }
 
                     }
                 }
-            }
+            }.onAppear(perform: {
+                viewModel.fetchArticles()
+            })
         }
     }
 }

@@ -6,7 +6,7 @@
 //
 
 public enum Endpoint {
-    case topHeadlines,
+    case topHeadlines
     case searchTerm
 
     func path() -> String {

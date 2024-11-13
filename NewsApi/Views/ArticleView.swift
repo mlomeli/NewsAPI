@@ -26,7 +26,7 @@ struct ArticleView: View {
                     Text(article.title).modifier(Headline())
                     HStack {
                         Text(article.source?.name  ?? "").modifier(Footnote())
-                        Text(article.publishedAt.formatted()).modifier(Footnote())
+                        Text(article.publishedAt).modifier(Footnote())
                     }
                     if let description = article.description {
                         Text(description).modifier(Abstract())

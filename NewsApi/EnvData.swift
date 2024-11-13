@@ -6,7 +6,7 @@
 //
 
 struct EnvData {
-    static let URL_PREFIX = "https://"
+    static let URLPREFIX = "https://"
     static let HOST = "newsapi.org"
     static var apiKey = ""
 }
