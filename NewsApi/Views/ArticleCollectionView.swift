@@ -16,14 +16,16 @@ struct ArticleCollectionView: View {
                     ForEach(Array(viewModel.articlesData.enumerated()), id: \.offset) { _, article in
                         NavigationLink(destination: ArticleView(article: article)) {
                             ArticleTeaserView(article: article).frame(height: reader.size.width*3/4 + 75).clipped()
-                        }
+                        }.onAppear(perform: {
+                            viewModel.loadMore(article:article)
+                        })
 
                     }
                 }
-            }.onAppear(perform: {
-                viewModel.fetchArticles()
-            })
-        }
+            }
+        }.onAppear(perform: {
+            viewModel.fetchArticles()
+        })
     }
 }
 

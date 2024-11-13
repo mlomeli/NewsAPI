@@ -15,38 +15,40 @@ import Combine
     @Published var articlesData = [Article]()
 
     func fetchArticles() {
-        let articlesUrlStrings = "https://newsapi.org/v2/top-headlines?country=us&apiKey="
-        print(articlesUrlStrings)
-        if let url = URL(string: articlesUrlStrings) {
-            print(url)
-            articlesCancellable =  URLSession.shared.dataTaskPublisher(for: url)
-                .receive(on: DispatchQueue.main)
-                .tryMap { (data, response) -> Data in
-                    print(response)
-                        guard let httpResponse = response as? HTTPURLResponse,
-                            httpResponse.statusCode == 200 else {
-                                throw URLError(.badServerResponse)
-                            }
-                        return data
-                        }
-                .decode(type: ResponseObject.self, decoder: JSONDecoder())
-                .eraseToAnyPublisher()
-                .sink(
-                    receiveCompletion : { status in
-                        switch status {
-                        case .finished:
-                            print("Data Downloaded")
-                        case .failure(let error):
-                            print(error)
-                        }
-                    },
-                    receiveValue: { responseObject in
-                        print("Data received \(responseObject)")
-                        self.articlesData = responseObject.articles
-                    }
-                )
-        } else {
-            print("failurl")
+        if (articlesData.count == 0){
+            articlesCancellable = Article.fetchTopHeadlines()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { status in
+                switch status {
+                case .finished:
+                    print("Fetch Articles Finished")
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }, receiveValue: { articles in
+                self.articlesData = articles
+            })
         }
+    }
+    func loadMore(article: Article) {
+        guard let latestArticle = articlesData.last,
+              article.id == latestArticle.id else {
+            return
+        }
+        articlesCancellable = Article.fetchTopHeadlines(to: latestArticle.publishedAt)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { status in
+                switch status {
+                case .finished:
+                    print("Fetch Articles Finished")
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }, receiveValue: { articles in
+                for newArticle in articles {
+
+                }
+                self.articlesData.append(contentsOf: articles)
+            })
     }
 }
