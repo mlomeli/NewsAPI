@@ -6,9 +6,14 @@
 //
 
 import SwiftUI
-
+//TO-DO: View Model should be a parameter.
 struct ArticleCollectionView: View {
-    @StateObject var viewModel = ArticlesViewModel()
+    @StateObject var viewModel: ArticlesViewModel
+    
+    init() {
+        _viewModel = StateObject(wrappedValue: ArticlesViewModel(apiClient: NewsApiClient()))
+    }
+    
     var body: some View {
         GeometryReader { reader in
             ScrollView {

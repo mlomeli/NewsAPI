@@ -12,7 +12,7 @@ struct ArticleTeaserView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            VStack {
+            VStack{
                 AsyncImage(url: article.urlToImage) { result in
                     if let image = result.image {
                         image
@@ -23,21 +23,23 @@ struct ArticleTeaserView: View {
                 }.frame(width: geometry.size.width, height: geometry.size.width*3/4)
 
                 VStack(alignment: .leading) {
-                    Text(article.title).modifier(Headline())
+                    Text(article.title).modifier(Headline()).lineLimit(3)
                     HStack {
                         Text(article.source?.name  ?? "").modifier(Footnote())
                         Spacer()
                         Text(article.publishedAt).modifier(Footnote())
                     }
+                    Spacer()
 
                 }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     .padding(.horizontal, 5)
                     .padding(.bottom, 10)
+                
             }.background(Color("Background"))
         }
     }
 }
 
 #Preview {
-    ArticleTeaserView(article: Article.sampleSelf()).background(Color.purple).frame(width: 350, height: 350).clipped()
+    ArticleTeaserView(article: Article.sampleSelf()).background(Color.purple)
 }

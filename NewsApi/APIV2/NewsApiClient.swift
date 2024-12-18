@@ -8,17 +8,43 @@
 import Combine
 import Foundation
 
-class ApiService {
-    static public let shared = ApiService()
+class NewsApiClient: NetworkingService {
+    
     private var session: URLSession
     private let decoder: JSONDecoder
 
-    private init() {
+    init() {
         decoder = JSONDecoder()
         session = URLSession.shared
     }
+    
+    // MARK: - Top Headlines
+     func fetchTopHeadlines() -> AnyPublisher<[Article], NetworkError> {
+        let responseObjectPublisher: AnyPublisher<ResponseObject, NetworkError> =
+        getRequest(endpoint: .topHeadlines, params: ["country": "us"])
+            .eraseToAnyPublisher()
 
-    public func getRequest<T: Decodable>(endpoint: Endpoint, params: [String: String]? = nil)
+        return
+            responseObjectPublisher
+            .map { response in
+                return response.articles
+            }.eraseToAnyPublisher()
+    }
+
+     func fetchTopHeadlines(to: String) -> AnyPublisher<[Article], NetworkError> {
+        let responseObjectPublisher: AnyPublisher<ResponseObject, NetworkError> =
+        getRequest(endpoint: .topHeadlines, params: ["to": to, "country": "us"])
+            .eraseToAnyPublisher()
+
+        return
+            responseObjectPublisher
+            .map { response in
+                return response.articles
+            }.eraseToAnyPublisher()
+    }
+    
+    // MARK: - HTTP Requests
+    func getRequest<T: Decodable>(endpoint: Endpoint, params: [String: String]? = nil)
     -> AnyPublisher<T, NetworkError> {
         var url = Self.makeURL(endpoint: endpoint)
         var request: URLRequest
@@ -30,7 +56,6 @@ class ApiService {
             url = url.appending(queryItems: queryItems)
         }
         request = URLRequest(url: url)
-        print(request.debugDescription)
         return session.dataTaskPublisher(for: request)
             .tryMap { data, response in
                 print(T.self)
@@ -45,7 +70,6 @@ class ApiService {
             }
             .eraseToAnyPublisher()
     }
-
     static private func makeURL(endpoint: Endpoint) -> URL {
         var url: URL
         url = URL(string: "\(EnvData.URLPREFIX)\(EnvData.HOST)?apiKey=\(EnvData.apiKey)")!

@@ -8,7 +8,7 @@ import Foundation
 extension Article: SampleDataProtocol {
     static func sampleSelf() -> Article {
         return Article(source: Source(id: nil, name: "FX"), author: nil,
-                       title: "It's Always Sunny in Philadelphia",
+                       title: "It's Always Sunny in Philadelphia ollows the exploits of a group of narcissistic and sociopathic f",
                        description: """
                         The series follows the exploits of a group of narcissistic and sociopathic friends who run the Irish dive bar Paddy's Pub in South Philadelphiaß
                         """,
@@ -21,7 +21,7 @@ extension Article: SampleDataProtocol {
         var articles: [Article] = []
         for idx in 1...10 {
             let article = Article(source: Source(id: nil, name: "FX"), author: nil,
-                           title: "It's Always Sunny in Philadelphia",
+                                  title: "It's Always Sunny in Philadelphia",
                            description: """
                             The series follows the exploits of a group of narcissistic and sociopathic friends who run the Irish dive bar Paddy's Pub in South Philadelphiaß
                             """,

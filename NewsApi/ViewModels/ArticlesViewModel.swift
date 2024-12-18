@@ -9,14 +9,19 @@ import Foundation
 import Combine
 
 @MainActor class ArticlesViewModel: ObservableObject {
+    
+    init(apiClient: any NetworkingService = NewsApiClient()) {
+        self.apiClient = apiClient
+    }
+    
 
     private var articlesCancellable: AnyCancellable?
-
+    var apiClient: NetworkingService
     @Published var articlesData = [Article]()
-
+    //TO-DO: Move Api calls to Protocol.
     func fetchArticles() {
         if (articlesData.count == 0){
-            articlesCancellable = Article.fetchTopHeadlines()
+            articlesCancellable = apiClient.fetchTopHeadlines()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { status in
                 switch status {
@@ -35,7 +40,7 @@ import Combine
               article.id == latestArticle.id else {
             return
         }
-        articlesCancellable = Article.fetchTopHeadlines(to: latestArticle.publishedAt)
+        articlesCancellable = apiClient.fetchTopHeadlines(to: latestArticle.publishedAt)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { status in
                 switch status {

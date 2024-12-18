@@ -29,33 +29,9 @@
 		490D96582CD96B51008A2ABA /* NewsApiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsApiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		4976622B2CE0277E005B94FB /* Exceptions for "NewsApi" folder in "NewsApi" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				README.md,
-			);
-			target = 490D963D2CD96B4D008A2ABA /* NewsApi */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		4976622C2CE0277E005B94FB /* Exceptions for "NewsApi" folder in "Compile Sources" phase from "NewsApi" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 490D963A2CD96B4D008A2ABA /* Sources */;
-			membershipExceptions = (
-				README.md,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		490D96402CD96B4D008A2ABA /* NewsApi */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				4976622B2CE0277E005B94FB /* Exceptions for "NewsApi" folder in "NewsApi" target */,
-				4976622C2CE0277E005B94FB /* Exceptions for "NewsApi" folder in "Compile Sources" phase from "NewsApi" target */,
-			);
 			path = NewsApi;
 			sourceTree = "<group>";
 		};
