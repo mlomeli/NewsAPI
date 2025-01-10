@@ -102,11 +102,11 @@
 				490D963A2CD96B4D008A2ABA /* Sources */,
 				490D963B2CD96B4D008A2ABA /* Frameworks */,
 				490D963C2CD96B4D008A2ABA /* Resources */,
-				49F6FB8A2CDEE56300373809 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				071961AC2D318C55007C9AF7 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				490D96402CD96B4D008A2ABA /* NewsApi */,
@@ -196,6 +196,9 @@
 			);
 			mainGroup = 490D96352CD96B4D008A2ABA;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				0719616C2D2D8CB8007C9AF7 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 490D963F2CD96B4D008A2ABA /* Products */;
 			projectDirPath = "";
@@ -232,27 +235,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		49F6FB8A2CDEE56300373809 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		490D963A2CD96B4D008A2ABA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -278,6 +260,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		071961AC2D318C55007C9AF7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 071961AB2D318C55007C9AF7 /* SwiftLintBuildToolPlugin */;
+		};
 		490D96502CD96B51008A2ABA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 490D963D2CD96B4D008A2ABA /* NewsApi */;
@@ -580,6 +566,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0719616C2D2D8CB8007C9AF7 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.57.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		071961AB2D318C55007C9AF7 /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0719616C2D2D8CB8007C9AF7 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 490D96362CD96B4D008A2ABA /* Project object */;
 }

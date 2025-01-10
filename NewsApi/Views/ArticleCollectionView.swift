@@ -6,23 +6,23 @@
 //
 
 import SwiftUI
-//TO-DO: View Model should be a parameter.
+// TO-DO: View Model should be a parameter.
 struct ArticleCollectionView: View {
     @StateObject var viewModel: ArticlesViewModel
-    
+    @State var listOfHeights = [Double]()
     init() {
         _viewModel = StateObject(wrappedValue: ArticlesViewModel(apiClient: NewsApiClient()))
     }
-    
+
     var body: some View {
         GeometryReader { reader in
             ScrollView {
                 LazyVStack {
                     ForEach(Array(viewModel.articlesData.enumerated()), id: \.offset) { _, article in
                         NavigationLink(destination: ArticleView(article: article)) {
-                            ArticleTeaserView(article: article).frame(height: reader.size.width*3/4 + 75).clipped()
+                            ArticleTeaserView(article: article).frame(width: reader.size.width).clipped()
                         }.onAppear(perform: {
-                            viewModel.loadMore(article:article)
+                            viewModel.loadMore(article: article)
                         })
 
                     }

@@ -20,7 +20,7 @@ struct ArticleView: View {
                     } else {
                         ProgressView()
                     }
-                }.frame(width: geometry.size.width, height: geometry.size.width*3/4)
+                }.frame(width: geometry.size.width, height: geometry.size.width*3/4).fixedSize()
 
                 VStack(alignment: .leading) {
                     Text(article.title).modifier(Headline())
@@ -31,7 +31,6 @@ struct ArticleView: View {
                     if let description = article.description {
                         Text(description).modifier(Abstract())
                     }
-
 
                 }.frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 5)

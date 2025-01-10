@@ -14,7 +14,6 @@ import Combine
         self.apiClient = apiClient
     }
     
-
     private var articlesCancellable: AnyCancellable?
     var apiClient: NetworkingService
     @Published var articlesData = [Article]()
@@ -31,7 +30,8 @@ import Combine
                     print(error.localizedDescription)
                 }
             }, receiveValue: { articles in
-                self.articlesData = articles
+                self.articlesData = articles.filter { $0.urlToImage != nil }
+                
             })
         }
     }
@@ -50,10 +50,8 @@ import Combine
                     print(error.localizedDescription)
                 }
             }, receiveValue: { articles in
-                for newArticle in articles {
-
-                }
-                self.articlesData.append(contentsOf: articles)
+                let filterArticles = articles.filter { $0.urlToImage != nil }
+                self.articlesData.append(contentsOf: filterArticles)
             })
     }
 }

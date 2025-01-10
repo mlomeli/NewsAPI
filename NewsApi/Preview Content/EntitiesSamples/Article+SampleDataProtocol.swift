@@ -8,7 +8,7 @@ import Foundation
 extension Article: SampleDataProtocol {
     static func sampleSelf() -> Article {
         return Article(source: Source(id: nil, name: "FX"), author: nil,
-                       title: "It's Always Sunny in Philadelphia ollows the exploits of a group of narcissistic and sociopathic f",
+                       title: "It's Always Sunny in Philadelphia is a show about narcisstic people.",
                        description: """
                         The series follows the exploits of a group of narcissistic and sociopathic friends who run the Irish dive bar Paddy's Pub in South Philadelphiaß
                         """,
@@ -26,7 +26,7 @@ extension Article: SampleDataProtocol {
                             The series follows the exploits of a group of narcissistic and sociopathic friends who run the Irish dive bar Paddy's Pub in South Philadelphiaß
                             """,
                            url: URL(string: "https://google.com?\(idx)")!,
-                           urlToImage: URL(string: "https://picsum.photos/200/300")!,
+                           urlToImage: URL(string: "https://picsum.photos/300/200")!,
                            publishedAt: "date")
             articles.append(article)
         }
