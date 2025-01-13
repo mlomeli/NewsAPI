@@ -44,7 +44,7 @@ struct ArticleTeaserView: View {
         }.frame(height: teaserHeight)
     }
 }
-//Geometry Reader will take all available space in the View and it will prevent the parent from properly sizing it.
+// Geometry Reader will take all available space in the View and it will prevent the parent from properly sizing it.
 struct TeaserHeightPreferenceKey: PreferenceKey {
     static var defaultValue: CGFloat = CGFloat(0)
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {

@@ -7,12 +7,9 @@
 
 import SwiftUI
 // TO-DO: View Model should be a parameter.
-struct ArticleCollectionView: View {
-    @StateObject var viewModel: ArticlesViewModel
+struct ArticleCollectionView<ViewModel>: View where ViewModel: AbstractArticlesViewModel {
+    @StateObject var viewModel: ViewModel
     @State var listOfHeights = [Double]()
-    init() {
-        _viewModel = StateObject(wrappedValue: ArticlesViewModel(apiClient: NewsApiClient()))
-    }
 
     var body: some View {
         GeometryReader { reader in
@@ -35,5 +32,5 @@ struct ArticleCollectionView: View {
 }
 
 #Preview {
-    ArticleCollectionView()
+    ArticleCollectionView(viewModel: ArticlesViewModel(apiClient: NewsApiClient()))
 }

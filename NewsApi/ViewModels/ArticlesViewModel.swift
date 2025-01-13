@@ -8,18 +8,24 @@
 import Foundation
 import Combine
 
-@MainActor class ArticlesViewModel: ObservableObject {
-    
-    init(apiClient: any NetworkingService = NewsApiClient()) {
+@MainActor protocol AbstractArticlesViewModel: ObservableObject {
+    var articlesData: [Article] {get set}
+    func fetchArticles()
+    func loadMore(article: Article)
+}
+
+class ArticlesViewModel: AbstractArticlesViewModel {
+
+    init(apiClient: any NetworkingService) {
         self.apiClient = apiClient
     }
-    
+
     private var articlesCancellable: AnyCancellable?
     var apiClient: NetworkingService
     @Published var articlesData = [Article]()
-    //TO-DO: Move Api calls to Protocol.
+
     func fetchArticles() {
-        if (articlesData.count == 0){
+        if articlesData.count == 0 {
             articlesCancellable = apiClient.fetchTopHeadlines()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { status in
@@ -31,10 +37,10 @@ import Combine
                 }
             }, receiveValue: { articles in
                 self.articlesData = articles.filter { $0.urlToImage != nil }
-                
             })
         }
     }
+
     func loadMore(article: Article) {
         guard let latestArticle = articlesData.last,
               article.id == latestArticle.id else {

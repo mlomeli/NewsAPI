@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationStack {
-            ArticleCollectionView() .navigationTitle("News")
+            ArticleCollectionView(viewModel: ArticlesViewModel(apiClient: NewsApiClient())) .navigationTitle("News")
         }
     }
 }
