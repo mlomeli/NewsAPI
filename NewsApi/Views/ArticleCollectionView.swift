@@ -9,7 +9,6 @@ import SwiftUI
 // TO-DO: View Model should be a parameter.
 struct ArticleCollectionView<ViewModel>: View where ViewModel: AbstractArticlesViewModel {
     @StateObject var viewModel: ViewModel
-    @State var listOfHeights = [Double]()
 
     var body: some View {
         GeometryReader { reader in

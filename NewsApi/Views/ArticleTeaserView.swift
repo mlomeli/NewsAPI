@@ -22,7 +22,7 @@ struct ArticleTeaserView: View {
                         ProgressView()
                     }
                 }.frame(width: geometry.size.width, height: geometry.size.width*3/4).clipped()
-                VStack(alignment:.leading) {
+                VStack(alignment: .leading) {
                     Text(article.title).modifier(Headline())
                         .lineLimit(3)
                         .fixedSize(horizontal: false, vertical: true)

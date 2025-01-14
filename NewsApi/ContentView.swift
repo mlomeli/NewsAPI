@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.newsApiClient) private var newsApiClient: NetworkingService
     var body: some View {
         NavigationStack {
-            ArticleCollectionView(viewModel: ArticlesViewModel(apiClient: NewsApiClient())) .navigationTitle("News")
+            ArticleCollectionView(viewModel: ArticlesViewModel(apiClient: newsApiClient)) .navigationTitle("News")
         }
     }
 }
