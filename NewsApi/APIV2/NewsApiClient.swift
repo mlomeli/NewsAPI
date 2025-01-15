@@ -9,7 +9,7 @@ import Combine
 import Foundation
 
 class NewsApiClient: NetworkingService {
-    
+
     private var session: URLSession
     private let decoder: JSONDecoder
 
@@ -17,11 +17,11 @@ class NewsApiClient: NetworkingService {
         decoder = JSONDecoder()
         session = URLSession.shared
     }
-    
+
     // MARK: - Top Headlines
-     func fetchTopHeadlines() -> AnyPublisher<[Article], NetworkError> {
+    func fetchTopHeadlines() -> AnyPublisher<[Article], NetworkError> {
         let responseObjectPublisher: AnyPublisher<ResponseObject, NetworkError> =
-        getRequest(endpoint: .topHeadlines, params: ["country": "us"])
+            getRequest(endpoint: .topHeadlines, params: ["country": "us"])
             .eraseToAnyPublisher()
 
         return
@@ -31,9 +31,9 @@ class NewsApiClient: NetworkingService {
             }.eraseToAnyPublisher()
     }
 
-     func fetchTopHeadlines(to: String) -> AnyPublisher<[Article], NetworkError> {
+    func fetchTopHeadlines(to: String) -> AnyPublisher<[Article], NetworkError> {
         let responseObjectPublisher: AnyPublisher<ResponseObject, NetworkError> =
-        getRequest(endpoint: .topHeadlines, params: ["to": to, "country": "us"])
+            getRequest(endpoint: .topHeadlines, params: ["to": to, "country": "us"])
             .eraseToAnyPublisher()
 
         return
@@ -42,10 +42,11 @@ class NewsApiClient: NetworkingService {
                 return response.articles
             }.eraseToAnyPublisher()
     }
-    
+
     // MARK: - HTTP Requests
     func getRequest<T: Decodable>(endpoint: Endpoint, params: [String: String]? = nil)
-    -> AnyPublisher<T, NetworkError> {
+        -> AnyPublisher<T, NetworkError>
+    {
         var url = Self.makeURL(endpoint: endpoint)
         var request: URLRequest
         var queryItems = [URLQueryItem]()

@@ -9,4 +9,5 @@ import Foundation
 
 protocol SampleDataProtocol {
     static func sampleSelf() -> Self
+    static func sampleSet() -> [Self]
 }

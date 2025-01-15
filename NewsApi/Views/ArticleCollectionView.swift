@@ -31,5 +31,5 @@ struct ArticleCollectionView<ViewModel>: View where ViewModel: AbstractArticlesV
 }
 
 #Preview {
-    ArticleCollectionView(viewModel: ArticlesViewModel(apiClient: NewsApiClient()))
+    ArticleCollectionView(viewModel: StubArticleViewModel())
 }
