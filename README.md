@@ -6,7 +6,7 @@ The objective to building this app is to provide educational examples on good pr
 
 - [x] Combine
 - [x] SwiftUI
-- [ ] Dependency Injection
+- [x] Dependency Injection
 - [ ] Unit Tests
 - [ ] UI Tests
 - [ ] Accesibility
