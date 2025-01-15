@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		07DC10CE2D3848FC00D484B3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 07DC10CD2D3848F500D484B3 /* .swiftlint.yml */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		490D964F2CD96B51008A2ABA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,20 +28,42 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07DC10CD2D3848F500D484B3 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		490D963E2CD96B4D008A2ABA /* NewsApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		490D964E2CD96B51008A2ABA /* NewsApiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsApiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		490D96582CD96B51008A2ABA /* NewsApiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsApiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		07DC10D92D38491C00D484B3 /* Exceptions for "NewsApiTests" folder in "NewsApi" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				NewsApiTests.swift,
+			);
+			target = 490D963D2CD96B4D008A2ABA /* NewsApi */;
+		};
+		07DC10DA2D38491C00D484B3 /* Exceptions for "NewsApiTests" folder in "NewsApiTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				NewsApiTests.swift,
+			);
+			target = 490D964D2CD96B51008A2ABA /* NewsApiTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		07DC10D72D38491C00D484B3 /* NewsApiTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				07DC10D92D38491C00D484B3 /* Exceptions for "NewsApiTests" folder in "NewsApi" target */,
+				07DC10DA2D38491C00D484B3 /* Exceptions for "NewsApiTests" folder in "NewsApiTests" target */,
+			);
+			path = NewsApiTests;
+			sourceTree = "<group>";
+		};
 		490D96402CD96B4D008A2ABA /* NewsApi */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = NewsApi;
-			sourceTree = "<group>";
-		};
-		490D96512CD96B51008A2ABA /* NewsApiTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = NewsApiTests;
 			sourceTree = "<group>";
 		};
 		490D965B2CD96B51008A2ABA /* NewsApiUITests */ = {
@@ -76,8 +102,9 @@
 			isa = PBXGroup;
 			children = (
 				490D96402CD96B4D008A2ABA /* NewsApi */,
-				490D96512CD96B51008A2ABA /* NewsApiTests */,
 				490D965B2CD96B51008A2ABA /* NewsApiUITests */,
+				07DC10D72D38491C00D484B3 /* NewsApiTests */,
+				07DC10CD2D3848F500D484B3 /* .swiftlint.yml */,
 				490D963F2CD96B4D008A2ABA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -109,6 +136,7 @@
 				071961AC2D318C55007C9AF7 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
+				07DC10D72D38491C00D484B3 /* NewsApiTests */,
 				490D96402CD96B4D008A2ABA /* NewsApi */,
 			);
 			name = NewsApi;
@@ -130,9 +158,6 @@
 			);
 			dependencies = (
 				490D96502CD96B51008A2ABA /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				490D96512CD96B51008A2ABA /* NewsApiTests */,
 			);
 			name = NewsApiTests;
 			packageProductDependencies = (
@@ -216,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07DC10CE2D3848FC00D484B3 /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

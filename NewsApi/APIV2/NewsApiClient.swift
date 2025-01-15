@@ -30,7 +30,6 @@ class NewsApiClient: NetworkingService {
                 return response.articles
             }.eraseToAnyPublisher()
     }
-
     func fetchTopHeadlines(to: String) -> AnyPublisher<[Article], NetworkError> {
         let responseObjectPublisher: AnyPublisher<ResponseObject, NetworkError> =
             getRequest(endpoint: .topHeadlines, params: ["to": to, "country": "us"])

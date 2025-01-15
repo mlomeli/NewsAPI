@@ -23,7 +23,7 @@ class StubArticleViewModel: AbstractArticlesViewModel {
                         print("Error: \(error)")
                     }
                 } receiveValue: { value in
-                    self.articlesData = Article.sampleSet()
+                    self.articlesData = value
                 }
         }
     }
@@ -43,7 +43,7 @@ class StubArticleViewModel: AbstractArticlesViewModel {
                     print("Error: \(error)")
                 }
             } receiveValue: { value in
-                self.articlesData = Article.sampleSet()
+                self.articlesData = value
             }
     }
 }

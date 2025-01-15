@@ -63,21 +63,25 @@ extension Article: SampleDataProtocol {
     }
     private static func mockDescription() -> String {
         let mockTechNewsDescriptions = [
-            "Scientists at QuantumTech Labs made a breakthrough discovery when their latest AI model began processing information in binary form, "
-                + "displaying dream-like neural patterns during routine operations. Research team reports unprecedented consciousness indicators.",
+            "Scientists at QuantumLabs made a breakthrough discovery when their latest AI model began "
+                + "processing information in binary form. The AI displayed dream-like neural patterns during routine"
+                + "operations, puzzling researchers. Team leaders report unprecedented consciousness indicators.",
 
-            "Mars Base One scientists have developed remarkable self-replicating coffee machines using local Martian minerals for construction. "
-                + "Colony administrators struggle to contain the exponential growth of caffeine dispensing units in the biodomes.",
+            "Mars Base One scientists have developed remarkable self-replicating coffee machines using local "
+                + "Martian minerals for construction. The machines have begun establishing their own maintenance "
+                + "protocols without human input. Colony administrators struggle to contain their exponential growth.",
 
-            "Revolutionary culinary AI 'ChefBot 3000' combines advanced algorithms with molecular gastronomy to transform abstract mathematical "
-                + "concepts into edible experiences. Diners report tasting the essence of pure mathematics.",
+            "Revolutionary culinary AI 'ChefBot 3000' combines advanced algorithms with molecular gastronomy "
+                + "to transform abstract mathematical concepts into edible experiences. Initial tests produced "
+                + "dishes tasting of prime numbers and fractals. Diners report enlightening taste experiences.",
 
-            "Quantum research facility announces their experimental computer has begun solving paradoxes that haven't been discovered yet. "
-                + "Theoretical physicists worldwide debate the implications of preprocessing future mathematical challenges.",
+            "Quantum research facility announces their experimental computer has begun solving paradoxes that "
+                + "haven't been discovered yet. Mathematical proofs appear in system logs before corresponding "
+                + "problems are formulated. Theoretical physicists worldwide debate temporal causality concerns.",
 
-            "Digital agriculture startup unveils cloud-based virtual garden platform with revolutionary nutrient simulation algorithms. Users can "
-                + "now grow and harvest downloadable produce, while dealing with procedurally generated virtual pest control challenges."
-
+            "Digital agriculture startup unveils cloud-based virtual garden platform with revolutionary nutrient "
+                + "simulation algorithms. Users report harvesting downloadable produce with unprecedented pixel "
+                + "quality. Virtual botanists warn about emerging synthetic plant diseases in the digital ecosystem."
         ]
         return mockTechNewsDescriptions.randomElement() ?? ""
     }
