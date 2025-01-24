@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ArticleTeaserView: View {
     @State var article: Article
-    @State private var teaserHeight: CGFloat = 0
+    @State var teaserHeight: CGFloat = 0
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                AsyncImage(url: article.urlToImage) { result in
+                AsyncImage(url: article.urlImage) { result in
                     if let image = result.image {
                         image
                             .resizable()

@@ -15,54 +15,34 @@ class NewsApiClient: NetworkingService {
 
     init() {
         decoder = JSONDecoder()
+        decoder.dataDecodingStrategy
         session = URLSession.shared
     }
 
-    // MARK: - Top Headlines
-    func fetchTopHeadlines() -> AnyPublisher<[Article], NetworkError> {
+    // MARK: - NetworkingService Protocol
+    func fetchTopHeadlines(request: RequestObject) -> AnyPublisher<ResponseObject, NetworkError> {
         let responseObjectPublisher: AnyPublisher<ResponseObject, NetworkError> =
-            getRequest(endpoint: .topHeadlines, params: ["country": "us"])
+            getRequest(endpoint: .topHeadlines, params: request.toArray())
             .eraseToAnyPublisher()
 
-        return
-            responseObjectPublisher
-            .map { response in
-                return response.articles
-            }.eraseToAnyPublisher()
+        return responseObjectPublisher
     }
-    func fetchTopHeadlines(to: String) -> AnyPublisher<[Article], NetworkError> {
-        let responseObjectPublisher: AnyPublisher<ResponseObject, NetworkError> =
-            getRequest(endpoint: .topHeadlines, params: ["to": to, "country": "us"])
-            .eraseToAnyPublisher()
 
-        return
-            responseObjectPublisher
-            .map { response in
-                return response.articles
-            }.eraseToAnyPublisher()
+    func fetchTopHeadlines() -> AnyPublisher<ResponseObject, NetworkError> {
+        return fetchTopHeadlines(request: RequestObject())
     }
 
     // MARK: - HTTP Requests
     func getRequest<T: Decodable>(endpoint: Endpoint, params: [String: String]? = nil)
         -> AnyPublisher<T, NetworkError>
     {
-        var url = Self.makeURL(endpoint: endpoint)
-        var request: URLRequest
-        var queryItems = [URLQueryItem]()
-        if let params = params {
-            for (query, value) in params {
-                queryItems.append(URLQueryItem(name: query, value: value))
-            }
-            url = url.appending(queryItems: queryItems)
-        }
-        request = URLRequest(url: url)
+        var url = Self.makeURL(endpoint: endpoint, params: params)
+        let request = URLRequest(url: url)
         return session.dataTaskPublisher(for: request)
             .tryMap { data, response in
-                print(T.self)
                 return try NetworkError.processResponse(data: data, response: response)
             }.decode(type: T.self, decoder: decoder)
             .mapError { error in
-                print(error.localizedDescription)
                 if let urlError = error as? URLError {
                     return NetworkError.urlError(error: urlError)
                 }
@@ -70,11 +50,20 @@ class NewsApiClient: NetworkingService {
             }
             .eraseToAnyPublisher()
     }
-    static private func makeURL(endpoint: Endpoint) -> URL {
+    static private func makeURL(endpoint: Endpoint, params: [String:String]?) -> URL {
         var url: URL
         url = URL(string: "\(EnvData.URLPREFIX)\(EnvData.HOST)?apiKey=\(EnvData.apiKey)")!
         url = url.appendingPathComponent(endpoint.path())
+
+        var queryItems = [URLQueryItem]()
+        if let params = params {
+            for (query, value) in params {
+                queryItems.append(URLQueryItem(name: query, value: value))
+            }
+            url = url.appending(queryItems: queryItems)
+        }
         let component = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+
         return component.url!
     }
 }

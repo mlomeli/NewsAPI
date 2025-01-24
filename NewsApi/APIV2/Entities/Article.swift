@@ -11,10 +11,46 @@ struct Article: Identifiable, Decodable {
     let author: String?
     let title: String
     let description: String?
-    let url: URL
-    let urlToImage: URL?
+    private let url: String?
+    private var urlToImage: String?
     let publishedAt: String
     var id: String {
-        url.absoluteString
+        (url ?? "") + title + publishedAt
     }
+
+    init(
+        source: Source?,
+        author: String?,
+        title: String,
+        description: String?,
+        url: String?,
+        urlToImage: String?,
+        publishedAt: String
+    ) {
+        self.source = source
+        self.author = author
+        self.title = title
+        self.description = description
+        self.url = url
+        self.urlToImage = urlToImage
+        self.publishedAt = publishedAt
+    }
+    
+    var articleURL: URL? {
+        guard let urlString = url,
+              !urlString.isEmpty else {
+            return nil
+        }
+        return URL(string:urlString)
+    }
+    var urlImage: URL? {
+        guard let urlString = urlToImage,
+              !urlString.isEmpty else {
+            return nil
+        }
+        return URL(string:urlString)
+    }
+
+
 }
+

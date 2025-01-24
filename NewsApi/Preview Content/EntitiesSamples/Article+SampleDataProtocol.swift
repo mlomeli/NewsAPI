@@ -14,23 +14,20 @@ extension Article: SampleDataProtocol {
             source: Source(id: nil, name: "FX"), author: nil,
             title: Article.mockNewsTitle(),
             description: Article.mockDescription(),
-            url: URL(string: "https://google.com")!,
-            urlToImage: URL.localURLForXCAssetJPG(name: "\(randomImageIndex)")
-                ?? URL.localURLForXCAssetJPG(name: "1")!,
+            url: "https://google.com",
+            urlToImage: URL.localURLForXCAssetJPG(name: "\(randomImageIndex)")?.absoluteString,
             publishedAt: "date")
     }
 
     static func sampleSet() -> [Article] {
         var articles: [Article] = []
-
         for idx in 1...10 {
             let article = Article(
                 source: Source(id: nil, name: "FX"), author: nil,
                 title: Article.mockNewsTitle(),
                 description: Article.mockDescription(),
-                url: URL(string: "https://google.com")!,
-                urlToImage: URL.localURLForXCAssetJPG(name: "\(idx)")
-                    ?? URL.localURLForXCAssetJPG(name: "1")!,
+                url: "https://google.com?\(Int.random(in:0...Int.max))",
+                urlToImage: URL.localURLForXCAssetJPG(name: "\(idx)")?.absoluteString,
                 publishedAt: "date")
             articles.append(article)
         }

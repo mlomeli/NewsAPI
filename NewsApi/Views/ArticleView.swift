@@ -13,10 +13,11 @@ struct ArticleView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                AsyncImage(url: article.urlToImage) { result in
+                AsyncImage(url: article.urlImage) { result in
                     if let image = result.image {
                         image
                             .resizable()
+                            .aspectRatio(contentMode: .fill)
                     } else {
                         ProgressView()
                     }
