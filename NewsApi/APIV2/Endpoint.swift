@@ -7,13 +7,13 @@
 
 public enum Endpoint {
     case topHeadlines
-    case searchTerm
+    case everything
 
     func path() -> String {
         switch self {
         case .topHeadlines:
             return "/v2/top-headlines"
-        case .searchTerm:
+        case .everything:
             return "/v2/everything"
         }
     }

@@ -8,33 +8,6 @@
 import Combine
 import Foundation
 
-@MainActor protocol AbstractArticlesViewModel: ObservableObject {
-    var articlesData: [Article] { get set }
-    var state: ViewModelState { get set }
-    func fetchArticles()
-    func loadMore(article: Article)
-}
-
-enum ViewModelState: Equatable {
-    case empty
-    case idle
-    case loading
-    case error(error: NetworkError)
-
-    static func == (lhs: ViewModelState, rhs: ViewModelState) -> Bool {
-        switch (lhs, rhs) {
-        case (.idle, .idle):
-            return true
-        case (.loading, .loading):
-            return true
-        case let (.error(lhsError), .error(rhsError)):
-            return lhsError == rhsError
-        default:
-            return false
-        }
-    }
-}
-
 class ArticlesViewModel: AbstractArticlesViewModel {
     var apiClient: NetworkingService
 
@@ -44,15 +17,23 @@ class ArticlesViewModel: AbstractArticlesViewModel {
     private var filteredResults = 0
     @Published var articlesData = [Article]()
     @Published var state: ViewModelState = .empty
+    @Published var type: ViewModelType
 
-    init(apiClient: any NetworkingService) {
+    init(apiClient: any NetworkingService, type: ViewModelType) {
+        self.type = type
         self.apiClient = apiClient
     }
-
+    // MARK: Protocol Implementation
     func fetchArticles() {
         if articlesData.count == 0 {
             state = .empty
-            articlesCancellable = apiClient.fetchTopHeadlines(request: RequestObject(pageSize: pageSize))
+
+            var request = RequestObject(pageSize: pageSize)
+            if case .everything(let term) = type {
+                request.q = term
+                request.countryCode = nil
+            }
+            articlesCancellable = getPublisher(request: request)
                 .receive(on: DispatchQueue.main)
                 .sink(
                     receiveCompletion: { status in
@@ -89,9 +70,14 @@ class ArticlesViewModel: AbstractArticlesViewModel {
             return
         }
         self.state = .loading
-        articlesCancellable = apiClient.fetchTopHeadlines(
-            request: RequestObject(pageSize: pageSize, page: currentPage + 1)
-        )
+        var request = RequestObject(pageSize: pageSize, page: currentPage + 1)
+
+        if case .everything(let term) = type {
+            request.q = term
+            request.countryCode = nil
+        }
+
+        articlesCancellable = getPublisher(request: request)
         .receive(on: DispatchQueue.main)
         .sink(
             receiveCompletion: { status in
@@ -115,4 +101,15 @@ class ArticlesViewModel: AbstractArticlesViewModel {
                 self.articlesData.append(contentsOf: filteredArticles)
             })
     }
+
+    // MARK: Helper functions
+    private func getPublisher(request: RequestObject) -> AnyPublisher<ResponseObject, NetworkError> {
+        switch type {
+        case .topHeadlines:
+            return apiClient.fetchTopHeadlines(request: request)
+        case .everything:
+            return apiClient.fetchEverything(request: request)
+        }
+    }
+
 }

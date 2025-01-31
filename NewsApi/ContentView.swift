@@ -10,10 +10,25 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.newsApiClient) private var newsApiClient: NetworkingService
     var body: some View {
-        NavigationStack {
-            ArticleCollectionView(viewModel: ArticlesViewModel(apiClient: newsApiClient)) .navigationTitle("News")
+        TabView {
+            NavigationStack {
+                ArticleCollectionView(viewModel: ArticlesViewModel(apiClient: newsApiClient, type: .topHeadlines))
+            }.tabItem {
+                Label("Top Headlines", systemImage: "newspaper")
+            }
+
+            NavigationStack {
+                ArticleCollectionView(
+                    viewModel: ArticlesViewModel(apiClient: newsApiClient, type: .everything(search: "apple"))
+                )
+            }.tabItem {
+                Label("Everything", systemImage: "globe")
+            }
+
         }
+
     }
+
 }
 
 #Preview {

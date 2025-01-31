@@ -9,5 +9,9 @@ import Foundation
 import SwiftUI
 
 extension EnvironmentValues {
-    @Entry var newsApiClient: NetworkingService = NewsApiClient()
+#if TARGET_IPHONE_SIMULATOR
+    @Entry var newsApiClient: NetworkingService = NewsApiClient.shared
+#else
+    @Entry var newsApiClient: NetworkingService = NewsApiClient.shared
+#endif
 }

@@ -4,9 +4,18 @@
 //
 //  Created by Miguel Lomeli on 1/16/25.
 //
+
+
 enum ExclusiveParameters {
     case sources(value: String)
     case category(value: String)
+}
+// TO-DO: Since we are using once request object for two endpoints. This is how we could make sure there's no
+// incompatible parameters being passed.
+
+enum QueryType {
+    case topHeadlines(country: String)
+    case everything(q: String)
 }
 
 struct RequestObject {

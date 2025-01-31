@@ -9,13 +9,13 @@ import Combine
 import Foundation
 
 class NewsApiClient: NetworkingService {
+    static let shared = NewsApiClient()
 
     private var session: URLSession
     private let decoder: JSONDecoder
 
-    init() {
+    private init() {
         decoder = JSONDecoder()
-        decoder.dataDecodingStrategy
         session = URLSession.shared
     }
 
@@ -32,11 +32,18 @@ class NewsApiClient: NetworkingService {
         return fetchTopHeadlines(request: RequestObject())
     }
 
+    func fetchEverything(request: RequestObject) -> AnyPublisher<ResponseObject, NetworkError> {
+        let responseObjectPublisher: AnyPublisher<ResponseObject, NetworkError> =
+        getRequest(endpoint: .everything, params: request.toArray())
+            .eraseToAnyPublisher()
+
+        return responseObjectPublisher
+    }
     // MARK: - HTTP Requests
-    func getRequest<T: Decodable>(endpoint: Endpoint, params: [String: String]? = nil)
+    private func getRequest<T: Decodable>(endpoint: Endpoint, params: [String: String]? = nil)
         -> AnyPublisher<T, NetworkError>
     {
-        var url = Self.makeURL(endpoint: endpoint, params: params)
+        let url = Self.makeURL(endpoint: endpoint, params: params)
         let request = URLRequest(url: url)
         return session.dataTaskPublisher(for: request)
             .tryMap { data, response in
@@ -50,6 +57,7 @@ class NewsApiClient: NetworkingService {
             }
             .eraseToAnyPublisher()
     }
+
     static private func makeURL(endpoint: Endpoint, params: [String:String]?) -> URL {
         var url: URL
         url = URL(string: "\(EnvData.URLPREFIX)\(EnvData.HOST)?apiKey=\(EnvData.apiKey)")!

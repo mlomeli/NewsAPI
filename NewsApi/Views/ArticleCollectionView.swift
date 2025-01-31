@@ -7,9 +7,21 @@
 
 import SwiftUI
 
+
+
 // TO-DO: View Model should be a parameter.
 struct ArticleCollectionView<ViewModel>: View where ViewModel: AbstractArticlesViewModel {
     @StateObject var viewModel: ViewModel
+
+    var title: String {
+        switch viewModel.type {
+        case .topHeadlines:
+            return "Top Headlines"
+        case .everything(let search):
+            return "Search: \(search)"
+        }
+    }
+
     var body: some View {
         let presentingError = Binding<Bool>(
             get: {
@@ -29,7 +41,7 @@ struct ArticleCollectionView<ViewModel>: View where ViewModel: AbstractArticlesV
             default:
                 collectionView()
             }
-        }.alert("Error", isPresented: presentingError) {
+        }.navigationTitle(title).alert("Error", isPresented: presentingError) {
             Button("OK", role: .cancel) {
                 viewModel.state = .idle
             }
@@ -38,7 +50,6 @@ struct ArticleCollectionView<ViewModel>: View where ViewModel: AbstractArticlesV
                 Text(error.localizedDescription)
             }
         }
-
     }
 
     func collectionView() -> some View {
