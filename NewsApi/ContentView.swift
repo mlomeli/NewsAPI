@@ -12,15 +12,13 @@ struct ContentView: View {
     var body: some View {
         TabView {
             NavigationStack {
-                ArticleCollectionView(viewModel: ArticlesViewModel(apiClient: newsApiClient, type: .topHeadlines))
+                ArticleCollectionView(viewModel: ArticlesViewModel(apiClient: newsApiClient, type: .topHeadlines(country: "us")))
             }.tabItem {
                 Label("Top Headlines", systemImage: "newspaper")
             }
 
             NavigationStack {
-                ArticleCollectionView(
-                    viewModel: ArticlesViewModel(apiClient: newsApiClient, type: .everything(search: "apple"))
-                )
+                FilterArticleCollectionView(viewModel: ArticlesViewModel(apiClient: newsApiClient, type: .everything(q: "")))
             }.tabItem {
                 Label("Everything", systemImage: "globe")
             }

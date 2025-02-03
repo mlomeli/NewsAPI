@@ -5,7 +5,6 @@
 //  Created by Miguel Lomeli on 1/16/25.
 //
 
-
 enum ExclusiveParameters {
     case sources(value: String)
     case category(value: String)
@@ -19,16 +18,18 @@ enum QueryType {
 }
 
 struct RequestObject {
-    var countryCode: String? = "us"
     var filters: ExclusiveParameters?
-    var q: String?
+    var queryType: QueryType
     var pageSize: Int? = 10
     var page: Int?
 
     func toArray() -> [String: String] {
         var dict = [String: String]()
-        if let countryCode = countryCode {
-            dict["country"] = countryCode
+        switch queryType {
+        case .topHeadlines(let country):
+            dict["country"] = country
+        case .everything(let q):
+            dict["q"] = q
         }
         if let filters = filters {
             switch filters {
@@ -37,9 +38,6 @@ struct RequestObject {
             case .category(let value):
                 dict["category"] = value
             }
-        }
-        if let q = q {
-            dict["q"] = q
         }
         if let pageSize = pageSize {
             dict["pageSize"] = "\(pageSize)"

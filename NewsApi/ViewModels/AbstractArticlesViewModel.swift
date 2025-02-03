@@ -15,8 +15,8 @@ import Combine
 }
 
 enum  ViewModelType {
-    case topHeadlines
-    case everything(search: String)
+    case topHeadlines(country: String)
+    case everything(q: String)
 }
 enum ViewModelState: Equatable {
     case empty

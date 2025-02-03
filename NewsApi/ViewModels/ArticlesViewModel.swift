@@ -16,24 +16,20 @@ class ArticlesViewModel: AbstractArticlesViewModel {
     private var pageSize = 10
     private var filteredResults = 0
     @Published var articlesData = [Article]()
-    @Published var state: ViewModelState = .empty
+    @Published var state: ViewModelState = .idle
     @Published var type: ViewModelType
 
     init(apiClient: any NetworkingService, type: ViewModelType) {
         self.type = type
         self.apiClient = apiClient
+        if case .topHeadlines = type {
+            self.state = .empty
+        }
     }
     // MARK: Protocol Implementation
     func fetchArticles() {
-        if articlesData.count == 0 {
             state = .empty
-
-            var request = RequestObject(pageSize: pageSize)
-            if case .everything(let term) = type {
-                request.q = term
-                request.countryCode = nil
-            }
-            articlesCancellable = getPublisher(request: request)
+            articlesCancellable = getPublisher()
                 .receive(on: DispatchQueue.main)
                 .sink(
                     receiveCompletion: { status in
@@ -56,7 +52,6 @@ class ArticlesViewModel: AbstractArticlesViewModel {
                         }
                         self.state = .idle
                     })
-        }
     }
 
     func loadMore(article: Article) {
@@ -70,14 +65,8 @@ class ArticlesViewModel: AbstractArticlesViewModel {
             return
         }
         self.state = .loading
-        var request = RequestObject(pageSize: pageSize, page: currentPage + 1)
 
-        if case .everything(let term) = type {
-            request.q = term
-            request.countryCode = nil
-        }
-
-        articlesCancellable = getPublisher(request: request)
+        articlesCancellable = getPublisher(page: currentPage + 1)
         .receive(on: DispatchQueue.main)
         .sink(
             receiveCompletion: { status in
@@ -103,11 +92,13 @@ class ArticlesViewModel: AbstractArticlesViewModel {
     }
 
     // MARK: Helper functions
-    private func getPublisher(request: RequestObject) -> AnyPublisher<ResponseObject, NetworkError> {
+    private func getPublisher(page: Int = 1) -> AnyPublisher<ResponseObject, NetworkError> {
         switch type {
-        case .topHeadlines:
+        case .topHeadlines(let country):
+            let request = RequestObject(queryType: .topHeadlines(country: country), pageSize: pageSize, page: page)
             return apiClient.fetchTopHeadlines(request: request)
-        case .everything:
+        case .everything(let q):
+            let request = RequestObject(queryType: .everything(q: q), pageSize: pageSize, page: page)
             return apiClient.fetchEverything(request: request)
         }
     }

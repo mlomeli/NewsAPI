@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 // TO-DO: View Model should be a parameter.
 struct ArticleCollectionView<ViewModel>: View where ViewModel: AbstractArticlesViewModel {
     @StateObject var viewModel: ViewModel
@@ -23,6 +21,7 @@ struct ArticleCollectionView<ViewModel>: View where ViewModel: AbstractArticlesV
     }
 
     var body: some View {
+        // Binding to present the error alert based on the viewModel state
         let presentingError = Binding<Bool>(
             get: {
                 if case .error = viewModel.state {
@@ -32,12 +31,13 @@ struct ArticleCollectionView<ViewModel>: View where ViewModel: AbstractArticlesV
             },
             set: { _ in viewModel.state = .idle}
         )
+
         Group {
             switch viewModel.state {
             case .empty:
-                ProgressView().onAppear(perform: {
+                ProgressView().onAppear {
                     viewModel.fetchArticles()
-                })
+                }
             default:
                 collectionView()
             }

@@ -29,7 +29,7 @@ class NewsApiClient: NetworkingService {
     }
 
     func fetchTopHeadlines() -> AnyPublisher<ResponseObject, NetworkError> {
-        return fetchTopHeadlines(request: RequestObject())
+        return fetchTopHeadlines(request: RequestObject(queryType: .topHeadlines(country: "us")))
     }
 
     func fetchEverything(request: RequestObject) -> AnyPublisher<ResponseObject, NetworkError> {

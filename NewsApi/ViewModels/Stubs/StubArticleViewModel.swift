@@ -10,7 +10,7 @@ import Foundation
 class StubArticleViewModel: AbstractArticlesViewModel {
     @Published var articlesData = [Article]()
     @Published var state: ViewModelState = .empty
-    @Published var type: ViewModelType = .topHeadlines
+    @Published var type: ViewModelType = .topHeadlines(country: "us")
     private var totalArticles = 0
     private var pageSize = 0
     private var articlesCancellable: AnyCancellable?
