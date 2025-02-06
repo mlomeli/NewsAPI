@@ -32,6 +32,8 @@ enum ViewModelState: Equatable {
             return true
         case let (.error(lhsError), .error(rhsError)):
             return lhsError == rhsError
+        case (.empty, .empty):
+            return true
         default:
             return false
         }

@@ -23,7 +23,7 @@ class ArticlesViewModel: AbstractArticlesViewModel {
         self.type = type
         self.apiClient = apiClient
         if case .topHeadlines = type {
-            self.state = .empty
+            self.state = ViewModelState.empty
         }
     }
     // MARK: Protocol Implementation

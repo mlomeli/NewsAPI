@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "78D8A94D-1597-4768-8152-9601939019F5",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:NewsApi.xcodeproj",
+        "identifier" : "490D964D2CD96B51008A2ABA",
+        "name" : "NewsApiTests"
+      }
+    }
+  ],
+  "version" : 1
+}

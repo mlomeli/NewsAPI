@@ -1,0 +1,136 @@
+{
+"status": "ok",
+"totalResults": 10,
+-"articles": [
+-{
+-"source": {
+"id": "bbc-news",
+"name": "BBC News"
+},
+"author": "BBC News",
+"title": "Trans doctor left 'upset and afraid' by nurse",
+"description": "Dr Beth Upton described being left in tears after the confrontation in a hospital changing room.",
+"url": "https://www.bbc.co.uk/news/articles/cd64p0dd034o",
+"urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/c83c/live/945edf70-e4af-11ef-840c-15b81a918e34.png",
+"publishedAt": "2025-02-06T18:22:26.244397Z",
+"content": "Dr Uptons began gender transition in January 2022, uses the pronouns she/her, and had been \"fully out in all aspects of my life\" since August 2022, including at work. \r\nThe medic said an NHS manager … [+1116 chars]"
+},
+-{
+-"source": {
+"id": "bbc-news",
+"name": "BBC News"
+},
+"author": "BBC News",
+"title": "We aborted healthy babies after NHS mistakes, couples tell BBC",
+"description": "Two women had abortions after an NHS trust mistakenly told them their babies had serious conditions, the BBC has learned.",
+"url": "https://www.bbc.co.uk/news/articles/cvgljz4vve2o",
+"urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/8e69/live/26391a00-dff6-11ef-a552-ef694361914c.jpg",
+"publishedAt": "2025-02-06T17:22:29.6508186Z",
+"content": "An investigation into the death carried out by the trust said the second test showed \"all 50 cells studied had a normal chromosome compliment\".\r\nThe first test result - which the couple say was the b… [+962 chars]"
+},
+-{
+-"source": {
+"id": "bbc-news",
+"name": "BBC News"
+},
+"author": "BBC News",
+"title": "Amandaland the mother of all comedies, say critics",
+"description": "Lucy Punch stars as Amanda in the sitcom, a spin-off from the popular BBC series Motherland.",
+"url": "https://www.bbc.co.uk/news/articles/c5yex3k7lp8o",
+"urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/be74/live/9a84f4d0-e486-11ef-90d6-551a5c070155.jpg",
+"publishedAt": "2025-02-06T17:07:30.3225396Z",
+"content": "The new show was created and written by the same team that came up with Bafta-winning comedy series Motherland; Holly Walsh, Helen Serafinowicz and Barunka O'Shaughnessy, with Horgan credited as crea… [+1069 chars]"
+},
+-{
+-"source": {
+"id": "bbc-news",
+"name": "BBC News"
+},
+"author": "BBC News",
+"title": "Sam Kerr: Footballer denies 'whiteness as insult' against police",
+"description": "Chelsea striker Samantha Kerr denies showing hostility towards a police officer \"because of his whiteness\".",
+"url": "https://www.bbc.co.uk/news/articles/c0m12zmmvxxo",
+"urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/f194/live/854d20f0-e491-11ef-829f-cb55ffe46467.jpg",
+"publishedAt": "2025-02-06T17:07:26.4772871Z",
+"content": "Ms Kerr was with her partner, West Ham midfielder Kristie Mewis, when the incident allegedly happened.\r\nThe striker has previously told the court the driver took the couple to Twickenham police stati… [+1208 chars]"
+},
+-{
+-"source": {
+"id": "bbc-news",
+"name": "BBC News"
+},
+"author": "BBC News",
+"title": "Interest rates cut but Bank of England halves growth forecast",
+"description": "Bank boss Andrew Bailey told the BBC it expected to cut rates further but warned the road ahead would be bumpy.",
+"url": "https://www.bbc.co.uk/news/articles/c0lzj3g77gpo",
+"urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/1950/live/ac4ba050-e487-11ef-89a1-3f5b746fc0a2.jpg",
+"publishedAt": "2025-02-06T16:37:20.4313223Z",
+"content": "Last week, Chancellor Rachel Reeves announced a number of measures to try to boost the UK economy.\r\nHowever, her decision in last year's Budget to increase employers' National Insurance contributions… [+1496 chars]"
+},
+-{
+-"source": {
+"id": "bbc-news",
+"name": "BBC News"
+},
+"author": "BBC News",
+"title": "EuroMillions jackpot of £83m claimed",
+"description": "The prize went unclaimed for 13 days.",
+"url": "https://www.bbc.co.uk/news/articles/c30d2dpdz6qo",
+"urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/b4d4/live/5b4411f0-e4a1-11ef-ae03-dfbcaa9af3aa.jpg",
+"publishedAt": "2025-02-06T15:52:23.7913415Z",
+"content": "A EuroMillions jackpot of more than £83.4m has been claimed after 13 days without the winner making themselves known, operator Allwyn has confirmed.\r\nThe ticket for the prize draw on 24 January worth… [+299 chars]"
+},
+-{
+-"source": {
+"id": "bbc-news",
+"name": "BBC News"
+},
+"author": "BBC News",
+"title": "Steve Coogan uses The Trip to avoid lengthier driving ban",
+"description": "The actor and comedian has been banned for two months instead of six, meaning filming can go-ahead.",
+"url": "https://www.bbc.co.uk/news/articles/c4g9vp24z6qo",
+"urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/a313/live/21f99700-e495-11ef-a319-fb4e7360c4ec.jpg",
+"publishedAt": "2025-02-06T15:37:24.6805495Z",
+"content": "Coogan's letter to the court read: \"I have a series of important film commitments scheduled for 2025, many of which involve driving as a central component of the work.\r\n\"I am due to appear in a well-… [+833 chars]"
+},
+-{
+-"source": {
+"id": "bbc-news",
+"name": "BBC News"
+},
+"author": "BBC News",
+"title": "Woman's divorce case was turned down by 116 legal aid lawyers",
+"description": "A woman who was assaulted by her husband was unable to find a legal aid lawyer in Scotland to handle her case.",
+"url": "https://www.bbc.co.uk/news/articles/cpdx5qjyw25o",
+"urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/472e/live/721b4ad0-e31e-11ef-9ade-9557f4eb91de.jpg",
+"publishedAt": "2025-02-06T14:52:20.3056831Z",
+"content": "Discontent over legal aid has been building in the profession for many years.\r\nThe Law Society of Scotland claims there is a real possibility the system could face \"complete collapse\" because payment… [+1189 chars]"
+},
+-{
+-"source": {
+"id": "bbc-news",
+"name": "BBC News"
+},
+"author": "BBC News",
+"title": "Met Police launches crackdown on mobile phone thefts",
+"description": "Some 230 people have been arrested and 1,000 phones seized by police in the past week.",
+"url": "https://www.bbc.co.uk/news/articles/c4g39ldprr3o",
+"urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/da7c/live/3e1d21c0-e483-11ef-89a1-3f5b746fc0a2.jpg",
+"publishedAt": "2025-02-06T13:22:38.7562905Z",
+"content": "The Met's Cdr Owain Richards said: \"We are seeing phone thefts on an industrial scale, fuelled by criminals making millions by being able to easily sell on stolen devices either here or abroad.\r\n\"By … [+623 chars]"
+},
+-{
+-"source": {
+"id": "bbc-news",
+"name": "BBC News"
+},
+"author": "BBC News",
+"title": "Strong earthquake near Santorini after days of tremors",
+"description": "More than 11,000 people have already left the island of Santorini in recent days.",
+"url": "https://www.bbc.co.uk/news/articles/ce8jlm6rm9qo",
+"urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/c72f/live/9c544090-e418-11ef-bd1b-d536627785f2.jpg",
+"publishedAt": "2025-02-06T00:52:21.0207951Z",
+"content": "Santorini welcomes millions of tourists annually, but it is currently low season meaning local residents and workers make up the majority of evacuees.\r\nSchools on Santorini - and other neighbouring i… [+1373 chars]"
+}
+]
+}
